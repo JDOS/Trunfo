@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="App/Templates/jsc/Chart.min.js"></script>
+        <script type="text/javascript">
+
+            var randomnb = function () {
+                return Math.round(Math.random() * 300)
+            };
+        </script>
+        <title>Trunfo</title>
+        <style>
+
+        </style>
+    </head>
+
+
+
+
+    <body>
+
+        <script type="text/javascript">
+            var options = {
+                responsive: true
+            };
+
+            var data = [
+                {
+                    value: randomnb(),
+                    color: "#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Informática"
+                },
+                {
+                    value: randomnb(),
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Logistica"
+                },
+                {
+                    value: 10,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Administração"
+                }
+            ]
+
+            window.onload = function () {
+
+                var ctx = document.getElementById("GraficoDonut").getContext("2d");
+                var PizzaChart = new Chart(ctx).Doughnut(data, options);
+            }
+        </script>
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-3"> 
+
+                    <a href="http://www.etecjk.com/">
+                        <img class="img-responsive" src="App/Images/logo-2.png" alt="JK" style="padding: 2em">
+                    </a>
+                    <nav class="navbar navbar-light ">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span> 
+                                </button>
+                                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="myNavbar">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="gerenciador.html"><span class="glyphicon glyphicon-wrench img-responsive"></span></a></li>
+                                    <li><a href=""><span class="glyphicon glyphicon-info-sign img-responsive"></span></a></li> 
+                                    <li><a href="#"><span class="glyphicon glyphicon-envelope img-responsive"></span></a></li> 
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>       
+                </div>
+                <div class="col-sm-6">
+
+                    <p style="text-align: center;font-family: 'Orbitron', sans-serif; font-size: 4.5em; color: rgba(255, 0, 0, 0.64)">Trunfo</p>           
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" ><span class="	glyphicon glyphicon-chevron-down"></span></button>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div id="demo" class=" collapse" >
+
+                        <div class="row" >
+
+                            <div class="col-sm-4" >
+                                <div class="form-group">
+
+                                    <select class="form-control" id="sel1">
+                                        <option>Informatica</option>
+                                        <option>Logistica</option>
+                                        <option>Administração</option>
+                                        <option>Contabilidade</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1">
+                                        <option>Matutino</option>
+                                        <option>Vespertino</option>
+                                        <option>Noturno</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1">
+                                        <option>São Paulo</option>
+                                        <option>Diadema</option>
+                                        <option>Santo André</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>  
+
+                <div class="col-sm-3" style="padding: 1em">  
+
+
+
+                    <canvas id="GraficoDonut" style="width:100%; padding: 0em"></canvas>
+
+
+                </div>
+
+
+                <div id="infoModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Receba Novas Vagas</h4>
+                            </div>
+                            <p>Escolha o curso e entre com o email!</p>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Informática</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Logistica</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Administração</label>
+                                    </div>
+                                </div>
+                                <form class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="panel panel-info" style="font-family: Ariel,Verdana">
+                        <div class="panel-heading">
+                            <spam style="color:#229ed5; font-size:1.25em">Programador CNC </spam>
+                            <spam style="color: #808080; font-size:1em;float: right "> (1 vaga) </spam>
+
+                        </div>
+                        <div class="panel-body">
+                            <spam style="color: #ec140d; font-size:1.0em; float: right  "> (+10 dias)</spam>
+                            <p style="color: #808080; font-size:0.90em; ">Logística/PCP - São Paulo - SP</p>
+                            <p style="color: #808080; font-size:1.00em; ">Estágio
+
+                            </p>
+                            <p style="text-align: justify;">Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</p>    
+
+                        </div>
+
+                        <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#infoModal">Info</button>
+
+                    </div>
+                </div>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Programador CNC</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">          
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Data publicação:</th>
+                                                <td>02/02/2016</td>
+                                                <th>Data expiração:</th>
+                                                <td>20/03/2016</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Empresa:</th>
+                                                <td>INFOABC</td>
+                                                <th>Tel:</th>
+                                                <td>(11) 2832-4485</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>E-Mail:</th>
+                                                <td>info@infoabc.com.br</td>
+                                                <th>Site:</th>
+                                                <td>www.infoabc.net.br</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Localidade:</th>
+                                                <td>São Paulo - SP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Categoria:</th>
+                                                <td>Informática</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tipo:</th>
+                                                <td>Estágio</td>
+                                            </tr>
+                                        <th>Periodo:</th>
+                                        <td>Matutino</td>
+                                        <th>Diária:</th>
+                                        <td>6h</td>
+                                        </tr>  
+                                        <tr>
+                                            <th>Requisitos:</th>
+                                            <td>
+                                        <li> Programar CNC </li>
+                                        <li> Ter Experiencia </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Descrição:</th>
+                                            <td>Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="panel panel-info" style="font-family: Ariel,Verdana" >
+                        <div class="panel-heading">
+                            <spam style="color:#229ed5; font-size:1.25em">Programador CNC </spam>
+                            <spam style="color: #808080; font-size:1.25em;float: right "> (1 vaga) </spam>
+
+                        </div>
+                        <div class="panel-body">
+                            <spam style="color: #f00; font-size:1.0em; float: right  "> (+10 dias)</spam>
+                            <p style="color: #808080; font-size:0.90em; ">Logística/PCP - São Paulo - SP</p>
+                            <p style="color: #808080; font-size:1.00em; ">Estágio
+
+                            </p>
+                            <p style="text-align: justify;">Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</p>    
+
+                        </div>
+
+                        <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#myModal">Info</button>
+
+                    </div>
+
+
+                </div>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Programador CNC</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">          
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Data publicação:</th>
+                                                <td>02/02/2016</td>
+                                                <th>Data expiração:</th>
+                                                <td>20/03/2016</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Empresa:</th>
+                                                <td>INFOABC</td>
+                                                <th>Tel:</th>
+                                                <td>(11) 2832-4485</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>E-Mail:</th>
+                                                <td>info@infoabc.com.br</td>
+                                                <th>Site:</th>
+                                                <td>www.infoabc.net.br</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Localidade:</th>
+                                                <td>São Paulo - SP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Categoria:</th>
+                                                <td>Informática</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tipo:</th>
+                                                <td>Estágio</td>
+                                            </tr>
+                                        <th>Periodo:</th>
+                                        <td>Matutino</td>
+                                        <th>Diária:</th>
+                                        <td>6h</td>
+                                        </tr>  
+                                        <tr>
+                                            <th>Requisitos:</th>
+                                            <td>
+                                        <li> Programar CNC </li>
+                                        <li> Ter Experiencia </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Descrição:</th>
+                                            <td>Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="panel panel-info" style="font-family: Ariel,Verdana">
+                        <div class="panel-heading">
+                            <spam style="color:#229ed5; font-size:1.25em">Programador CNC </spam>
+                            <spam style="color: #808080; font-size:1.25em;float: right "> (1 vaga) </spam>
+
+                        </div>
+                        <div class="panel-body">
+                            <spam style="color: #ec140d; font-size:1.0em; float: right  "> (+10 dias)</spam>
+                            <p style="color: #808080; font-size:0.90em; ">Logística/PCP - São Paulo - SP</p>
+                            <p style="color: #808080; font-size:1.00em; ">Estágio
+
+                            </p>
+                            <p style="text-align: justify;">Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</p>    
+
+                        </div>
+
+                        <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#myModal">Info</button>
+
+                    </div>
+
+
+                </div>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Programador CNC</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">          
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Data publicação:</th>
+                                                <td>02/02/2016</td>
+                                                <th>Data expiração:</th>
+                                                <td>20/03/2016</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Empresa:</th>
+                                                <td>INFOABC</td>
+                                                <th>Tel:</th>
+                                                <td>(11) 2832-4485</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>E-Mail:</th>
+                                                <td>info@infoabc.com.br</td>
+                                                <th>Site:</th>
+                                                <td>www.infoabc.net.br</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Localidade:</th>
+                                                <td>São Paulo - SP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Categoria:</th>
+                                                <td>Informática</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tipo:</th>
+                                                <td>Estágio</td>
+                                            </tr>
+                                        <th>Periodo:</th>
+                                        <td>Matutino</td>
+                                        <th>Diária:</th>
+                                        <td>6h</td>
+                                        </tr>  
+                                        <tr>
+                                            <th>Requisitos:</th>
+                                            <td>
+                                        <li> Programar CNC </li>
+                                        <li> Ter Experiencia </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Descrição:</th>
+                                            <td>Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="panel panel-info" style="font-family: Ariel,Verdana">
+                        <div class="panel-heading">
+                            <spam style="color:#229ed5; font-size:1.25em">Programador CNC </spam>
+                            <spam style="color: #808080; font-size:1.25em;float: right "> (1 vaga) </spam>
+
+                        </div>
+                        <div class="panel-body">
+                            <spam style="color: #ec140d; font-size:1.0em; float: right  "> (+10 dias)</spam>
+                            <p style="color: #808080; font-size:0.90em; ">Logística/PCP - São Paulo - SP</p>
+                            <p style="color: #808080; font-size:1.00em; ">Estágio
+
+                            </p>
+                            <p style="text-align: justify;">Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</p>    
+
+                        </div>
+
+                        <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#myModal">Info</button>
+
+                    </div>
+
+
+                </div>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Programador CNC</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive">          
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Data publicação:</th>
+                                                <td>02/02/2016</td>
+                                                <th>Data expiração:</th>
+                                                <td>20/03/2016</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Empresa:</th>
+                                                <td>INFOABC</td>
+                                                <th>Tel:</th>
+                                                <td>(11) 2832-4485</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th>E-Mail:</th>
+                                                <td>info@infoabc.com.br</td>
+                                                <th>Site:</th>
+                                                <td>www.infoabc.net.br</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Localidade:</th>
+                                                <td>São Paulo - SP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Categoria:</th>
+                                                <td>Informática</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tipo:</th>
+                                                <td>Estágio</td>
+                                            </tr>
+                                        <th>Periodo:</th>
+                                        <td>Matutino</td>
+                                        <th>Diária:</th>
+                                        <td>6h</td>
+                                        </tr>  
+                                        <tr>
+                                            <th>Requisitos:</th>
+                                            <td>
+                                        <li> Programar CNC </li>
+                                        <li> Ter Experiencia </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Descrição:</th>
+                                            <td>Irá elaborar programas de máquina torno, centro de usinagem, e elaborar processos de produção e evolução de etapas, desde a matéria prima até o processo final.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+CREATE DATABASE trunfo;
+CREATE TABLE usuario(
+  email_usuario VARCHAR(100) PRIMARY KEY NOT NULL,
+  nome_usuario VARCHAR(50)
+);
+CREATE TABLE infoUsuario(
+  email_usuario VARCHAR(100) PRIMARY KEY NOT NULL,
+  codigo_curso INT(10) PRIMARY KEY NOT NULL,
+  CONSTRAINT fk_infoUsuario FOREIGN KEY(email_usuario) REFERENCES usuario(email_usuario),
+  CONSTRAINT fk_cursoVaga FOREIGN KEY(codigo_curso) REFERENCES cursoVaga(codigo_curso)
+);
+CREATE TABLE curso(
+  codigo_curso INT(10) PRIMARY KEY NOT NULL,
+  nome_curso VARCHAR(100) NOT NULL
+);
+CREATE TABLE cursoVaga(
+  codigo_curso INT(10) PRIMARY KEY NOT NULL,
+  codigo_vaga INT PRIMARY KEY NOT NULL,
+  CONSTRAINT fk_curso FOREIGN(codigo_curso) REFERENCES curso(codigo_curso),
+  CONSTRAINT fk_vaga FOREIGN(codigo_vaga) REFERENCES vaga(codigo_vaga)
+);
+CREATE TABLE empresa(
+  cnpj_empresa INT PRIMARY KEY NOT NULL,
+  nomeFantasia_empresa VARCHAR,
+  estado VARCHAR,
+  cidade VARCHAR,
+  rua VARCHAR,
+  numero INT,
+  CEP INT,
+  telefone1 INT,
+  telefone2 INT,
+  email VARCHAR
+);
+CREATE TABLE vaga(
+  codigo_vaga INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  dataCriacao_vaga TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  dataValidade_vaga DATE,
+  funcao_vaga VARCHAR,
+  quantidade_vaga INT,
+  requisitos_vaga VARCHAR,
+  descrição_vaga VARCHAR,
+  horarioEntrada_vaga TIME,
+  horarioSaida_vaga TIME,
+  turnoExpediente_vaga VARCHAR,
+  horasTrabalho_vaga TIME,
+  cnpj_empresa INT NOT NULL,
+  CONSTRAINT fk_EMPRESA FOREIGN(cnpj_empresa) REFERENCES empresa(cnpj_empresa)
+);

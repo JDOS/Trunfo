@@ -1,0 +1,120 @@
+
+
+
+		<!-- Cards Start -->
+		
+		
+				 <div class="container-fluid">
+				 
+							<div class="row">
+							{% for vaga in vagas %}
+								<div class="col-sm-3">
+								
+									<div class="panel panel-info" style="font-family: Ariel,Verdana">
+										<div class="panel-heading">
+											<spam style="color:#229ed5; font-size:1.25em">{{vaga.funcao}} </spam>
+											<spam style="color: #808080; font-size:1em;float: right "> {{vaga.quantidade}} </spam>
+
+										</div>
+										<div class="panel-body">
+											<spam style="color: #ec140d; font-size:1.0em; float: right  ">{{vaga.expiracao}}</spam>
+											<p style="color: #808080; font-size:0.90em; ">{{vaga.cidade}} - {{vaga.estado}}</p>
+											<p style="color: #808080; font-size:1.00em; ">{{vaga.empresa}}
+
+											</p>
+											<p style="text-align: justify;">{{vaga.descricao}}</p>    
+
+										</div>
+
+										<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#{{vaga.id}}">Info</button>
+
+									</div>
+									
+								</div>
+								{% endfor %}
+
+								{% for vaga in vagas %}
+								<!-- Tabela Vaga Start-->
+								<div id="{{vaga.id}}" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">{{vaga.funcao}}</h4>
+											</div>
+											<div class="modal-body">
+												<div class="table-responsive">          
+													<table class="table">
+														<tbody>
+															<tr>
+																<th>Data publicação:</th>
+																<td>{{vaga.criada}}</td>
+																<!--
+																<th>Data expiração:</th>
+																<td>{{vaga.validade}}</td>
+																-->
+															</tr>
+															<tr>
+																<th>Empresa:</th>
+																<td>{{vaga.empresa}}</td>
+																<th>Tel:</th>
+																<td>{{vaga.telefone}}</td>
+
+															</tr>
+
+															<tr>
+																<th>E-Mail:</th>
+																<td>{{vaga.email}}</td>
+																<!--
+																<th>Site:</th>
+																<td>{{vaga.site}}</td>
+																-->
+															</tr>
+															<tr>
+																<th>Localidade:</th>
+																<td>{{vaga.cidade}} - {{vaga.estado}}</td>
+															</tr>
+															<!--
+															<tr>
+																<th>Categoria:</th>
+																<td>{{vaga.curso}}</td>
+															</tr>
+															-->
+															<tr>
+															<!--
+																<th>Tipo:</th>
+																<td>{{vaga.tipo}}</td>
+															</tr>
+															-->
+														<th>Periodo:</th>
+														<td>{{vaga.periodo}}</td>
+														<th>Diária:</th>
+														<td>{{vaga.horario_entrada}} - {{vaga.horario_saida}} </td>
+														</tr>  
+														<tr>
+															<th>Requisitos:</th>
+															<td>{{vaga.requisito}}</td>
+														</tr>
+														<tr>
+															<th>Descrição:</th>
+															<td>{{vaga.descricao}}</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<!-- CabeÃ§alho Site End-->
+								{% endfor %}
+							</div>
+				</div>
+		
+		<!-- Cards End -->
