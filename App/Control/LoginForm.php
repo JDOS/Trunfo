@@ -51,7 +51,7 @@ class LoginForm extends Page
     public function onLogin($param)
     {
         $data = $this->form->getData();
-        if ($data->login == 'admin' AND $data->password == '!@info34')
+        if ($data->login == 'admin' AND $data->password == '')
         {
             Session::setValue('logged', TRUE);
             echo "<script language='JavaScript'> window.location = 'index.php'; </script>";
