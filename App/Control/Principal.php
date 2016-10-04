@@ -3,7 +3,7 @@ use Sheep\Control\Page;
 use Sheep\Widgets\Container\Panel;
 use Sheep\Database\Transaction;
 use Sheep\Widgets\Dialog\Message;
-class CardList extends Page 
+class Principal extends Page 
 {
 	public function __construct(){
 		
@@ -13,7 +13,7 @@ class CardList extends Page
 			
 			$loader = new Twig_Loader_Filesystem('App/Resources'); 
 			$twig = new Twig_Environment($loader); 
-			$template = $twig->loadTemplate('card.html'); 
+			$template = $twig->loadTemplate('principal.html');
 			
 			
 			try {
@@ -21,8 +21,28 @@ class CardList extends Page
 				Transaction::open('trunfo');
 				
 				$vagas = Vaga::all();
-				
-				
+				$cursos = Curso::all();
+                                $cidades = Cidade::all();
+                                
+				if ($cursos){
+                                    foreach($cursos as $curso){
+                                        $curso_array=$curso->toArray();
+                                        $curso_array['id']=$curso->id;
+                                        $curso_array['nome']=$curso->nome;  
+                                        $replaces['cursos'][]=$curso_array;
+                                    }
+                                }
+                                
+                                if ($cidades){
+                                    foreach($cidades as $cidade){
+                                        $cidade_array=$curso->toArray();
+                                        $cidade_array['id']=$cidade->id;
+                                        $cidade_array['nome']=$cidade->nome;  
+                                        $replaces['cidades'][]=$cidade_array;
+                                    }
+                                }
+                              
+                                
 				if ($vagas){
 					foreach ($vagas as $vaga){
 						$vaga_array=$vaga->toArray();
@@ -41,18 +61,17 @@ class CardList extends Page
 						$replaces['vagas'][]=$vaga_array;
 					}
 				}
+                               
 				$grafico= array();
 				$grafico['log']=10;
 				$grafico['adm']=10;
 				$grafico['info']=10;
 				$replaces['grafico']=$grafico;
 				//print_r($replaces);
-				$content1 = $template->render($replaces);
-				
-                                $template2 = $twig->loadTemplate('principal.html');
-                                $replaces2 = array();
-                                $replaces2['conteudo']=$content1;
-                                $content = $template2->render($replaces2);
+				$content = $template->render($replaces);
+				 
+                        
+                                
 			}
 			
 			

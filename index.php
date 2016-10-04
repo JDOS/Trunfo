@@ -25,8 +25,8 @@ if (Session::getValue('logged')) {
 }
 
 else {
-	$template = file_get_contents('App/Templates/principal.html');
-    $class = 'CardList';
+    $template = file_get_contents('App/Templates/welcome.html');
+    $class = 'Principal';
 	
 	if (isset($_GET['class']) AND ($_GET['class']!='CardList') ){
 			$inject=$_GET['class'];

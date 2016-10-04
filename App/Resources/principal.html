@@ -1,0 +1,313 @@
+	<!-- Gera Grafico Start -->
+        <script charset="UTF-8" type="text/javascript">
+            var options = {
+                responsive: true
+            };
+
+            var data = [
+                {
+                    value: {{grafico.info}},
+                    color: "#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Informatica"
+                },
+                {
+                    value: {{grafico.log}},
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Logistica"
+                },
+                {
+                    value: {{grafico.adm}},
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Administracao"
+                }
+            ]
+
+            window.onload = function () {
+
+                var ctx = document.getElementById("GraficoDonut").getContext("2d");
+                var PizzaChart = new Chart(ctx).Doughnut(data, options);
+            }
+        </script>
+        <!-- Gera Grafico End -->
+		
+		<!-- CabeÃ§alho Site Start-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-3"> 
+					
+					<!-- Imagem Start-->
+                    <a href="http://www.etecjk.com/">
+                        <img class="img-responsive" src="App/Images/logo-2.png" alt="JK" style="padding: 2em">
+                    </a>
+                    <!-- Imagem End-->
+					
+					
+					<!-- Menu Start-->
+		<nav class="navbar navbar-light ">
+                        <div class="container-fluid">
+						
+			<!-- Menu Mobile Start-->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span> 
+                                </button>
+                                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+                            </div>
+			<!-- Menu Mobile End-->
+							
+		     <!-- Menu Desk Start-->
+                            <div class="collapse navbar-collapse" id="myNavbar">
+				
+                                <ul class="nav navbar-nav">
+                                    <li><a href="index.php?class=LoginForm"><span class="glyphicon glyphicon-wrench img-responsive"></span></a></li>
+                                    <li><a href=""><span class="glyphicon glyphicon-info-sign img-responsive"></span></a></li> 
+                                   <!--  <li><a href=""><span class="glyphicon glyphicon-envelope img-responsive"></span></a></li> -->
+                                </ul>
+                              
+								
+								
+								
+                            </div>
+							<!-- Menu Desk End-->
+							
+                        </div>
+                </nav>     
+						
+					<!-- Menu End-->
+					
+                </div>
+				
+				<!-- Menu Pesquisa Start-->
+				
+                <div class="col-sm-6">
+
+                    <p style="text-align: center;font-family: 'Orbitron', sans-serif; font-size: 4.5em; color: rgba(255, 0, 0, 0.64)">Trunfo</p>           
+                <form action="LoginForm.php">	
+                    <div class="form-group">
+                        <div class="input-group" >
+                            <input  type="text"  class="form-control" placeholder="Pesquisar...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" ><span class="	glyphicon glyphicon-chevron-down"></span></button>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div id="demo" class=" collapse" >
+
+                        <div class="row" >
+
+                            <div class="col-sm-4" >
+                                <div class="form-group">
+
+                                    <select name="curso" class="form-control" >
+                                       
+                                              <option value="0">Cursos</option> 
+                                         {% for curso in cursos %}
+                                             <option value="{{curso.id}}">{{curso.nome}}</option>                
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1">
+                                        <option value=""><b>Periodo</b></option> 
+                                        <option value="matutino">Matutino</option>
+                                        <option value="vespertino">Vespertino</option>
+                                        <option value="noturno">Noturno</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" >
+
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1">
+                                        <option value="0">Cidades</option> 
+                                         {% for cidade in cidades %}
+                                             <option value="{{cidade.id}}">{{cidade.nome}}</option>                
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+				
+                </div>  
+				
+				<!-- Menu Pesquisa End-->
+				
+				
+				<!-- Grafico Pizza Start-->
+                <div class="col-sm-3" style="padding: 1em">  
+                    <canvas id="GraficoDonut" style="width:100%; padding: 0em"></canvas>
+                </div>
+				<!-- Grafico Pizza End-->
+
+				<!-- Modal Form Vaga por email Start-->
+                <div id="formVaga" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Receba Novas Vagas</h4>
+                            </div>
+                            <p>Escolha o curso e entre com o email!</p>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> InformÃ¡tica</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Logistica</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> AdministraÃ§Ã£o</label>
+                                    </div>
+                                </div>
+                                <form class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<!-- Modal Form Vaga por email End-->
+            </div>
+
+        </div>
+		<!-- CabeÃ§alho Site End-->
+                  	<!-- Cards Start -->
+		
+		
+				 <div class="container-fluid">
+				 
+							<div class="row">
+							{% for vaga in vagas %}
+								<div class="col-sm-3">
+								
+									<div class="panel panel-info" style="font-family: Ariel,Verdana">
+										<div class="panel-heading">
+											<spam style="color:#229ed5; font-size:1.25em">{{vaga.funcao}} </spam>
+											<spam style="color: #808080; font-size:1em;float: right "> {{vaga.quantidade}} </spam>
+
+										</div>
+										<div class="panel-body">
+											<spam style="color: #ec140d; font-size:1.0em; float: right  ">{{vaga.expiracao}}</spam>
+											<p style="color: #808080; font-size:0.90em; ">{{vaga.cidade}} - {{vaga.estado}}</p>
+											<p style="color: #808080; font-size:1.00em; ">{{vaga.empresa}}
+
+											</p>
+											<p style="text-align: justify;">{{vaga.descricao}}</p>    
+
+										</div>
+
+										<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#{{vaga.id}}">Info</button>
+
+									</div>
+									
+								</div>
+								{% endfor %}
+
+								{% for vaga in vagas %}
+								<!-- Tabela Vaga Start-->
+								<div id="{{vaga.id}}" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">{{vaga.funcao}}</h4>
+											</div>
+											<div class="modal-body">
+												<div class="table-responsive">          
+													<table class="table">
+														<tbody>
+															<tr>
+																<th>Data publicação:</th>
+																<td>{{vaga.criada}}</td>
+																<!--
+																<th>Data expiração:</th>
+																<td>{{vaga.validade}}</td>
+																-->
+															</tr>
+															<tr>
+																<th>Empresa:</th>
+																<td>{{vaga.empresa}}</td>
+																<th>Tel:</th>
+																<td>{{vaga.telefone}}</td>
+
+															</tr>
+
+															<tr>
+																<th>E-Mail:</th>
+																<td>{{vaga.email}}</td>
+																<!--
+																<th>Site:</th>
+																<td>{{vaga.site}}</td>
+																-->
+															</tr>
+															<tr>
+																<th>Localidade:</th>
+																<td>{{vaga.cidade}} - {{vaga.estado}}</td>
+															</tr>
+															<!--
+															<tr>
+																<th>Categoria:</th>
+																<td>{{vaga.curso}}</td>
+															</tr>
+															-->
+															<tr>
+															<!--
+																<th>Tipo:</th>
+																<td>{{vaga.tipo}}</td>
+															</tr>
+															-->
+														<th>Periodo:</th>
+														<td>{{vaga.periodo}}</td>
+														<th>Diária:</th>
+														<td>{{vaga.horario_entrada}} - {{vaga.horario_saida}} </td>
+														</tr>  
+														<tr>
+															<th>Requisitos:</th>
+															<td>{{vaga.requisito}}</td>
+														</tr>
+														<tr>
+															<th>Descrição:</th>
+															<td>{{vaga.descricao}}</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<!-- CabeÃ§alho Site End-->
+								{% endfor %}
+							</div>
+				</div>
+		
+		<!-- Cards End -->
+                   
