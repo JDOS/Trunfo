@@ -54,7 +54,7 @@ class LoginForm extends Page
         if ($data->login == 'admin' AND $data->password == '!@info34')
         {
             Session::setValue('logged', TRUE);
-            echo "<script language='JavaScript'> window.location = 'index.php'; </script>";
+            echo "<script language='JavaScript'> window.location = 'index.php?class=CursoList'; </script>";
         }
     }
     

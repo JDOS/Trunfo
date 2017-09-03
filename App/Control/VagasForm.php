@@ -39,10 +39,10 @@ class VagasForm extends Page
 		$horario_saida  = new TimeField('horario_saida');
         $turno_expediente    = new Combo('turno_expediente');
 		$turno_expediente->addItems(array(  'Matutino'=>'Matutino',
-											'Vespertino'=>'Vespertino',
-											'Noturno'=>'Noturno',
-											'Integral'=>'Integral',
-											));
+						'Vespertino'=>'Vespertino',
+						'Noturno'=>'Noturno',
+						'Integral'=>'Integral',
+                ));
 		
         $horas_trabalho    = new TimeField('horas_trabalho');
 		$empresa  = new Combo('id_empresa');

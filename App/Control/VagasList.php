@@ -111,14 +111,14 @@ class VagasList extends Page
         }
 
         // carrega as empresas que satisfazem o critério
-        $empresas = $repository->load($criteria);
+        $vagas = $repository->load($criteria);
         $this->datagrid->clear();
-        if ($empresas)
+        if ($vagas)
         {
-            foreach ($empresas as $empresa)
+            foreach ($vagas as $vaga)
             {
                 // adiciona o objeto na Datagrid
-                $this->datagrid->addItem($empresa);
+                $this->datagrid->addItem($vaga);
             }
         }
 

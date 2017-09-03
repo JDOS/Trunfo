@@ -3,6 +3,10 @@ use Sheep\Control\Page;
 use Sheep\Widgets\Container\Panel;
 use Sheep\Database\Transaction;
 use Sheep\Widgets\Dialog\Message;
+use Sheep\Database\Repository;
+use Sheep\Database\LoggerTXT;
+use Sheep\Database\Criteria;
+use Sheep\Database\Filter;
 class Principal extends Page 
 {
 	public function __construct(){
@@ -61,17 +65,39 @@ class Principal extends Page
 						$replaces['vagas'][]=$vaga_array;
 					}
 				}
-                               
-				$grafico= array();
-				$grafico['log']=10;
-				$grafico['adm']=10;
-				$grafico['info']=10;
+                                
+                               //  Transaction::setLogger(new LoggerTXT('/Tmp/log_grafico.txt'));
+        
+                                $cursos = Curso::all();
+                                // print_r($cursos);
+                                $i=0;
+                                foreach ($cursos as $curso){
+                                    $criteria = new Criteria;
+                                    $criteria->add(new Filter('id_curso','=',$curso->id));
+                                    $repo=new Repository('CursoVaga');
+                                    $cursosCount = $repo->count($criteria);
+                                    $numeroCursos[$curso->id]['nome'] = $curso->nome;
+                                    $numeroCursos[$curso->id] ['numero']=$cursosCount;
+                                    
+                                    
+                                    //print_r($cursosCount);
+                                }
+                                
+                                $grafico= array();
+				$grafico['log']=$numeroCursos[2]['numero'];
+				$grafico['adm']=$numeroCursos[3]['numero'];
+				$grafico['info']=$numeroCursos[1]['numero'];
 				$replaces['grafico']=$grafico;
+                               
+                                //print_r($grafico);
 				//print_r($replaces);
+                                
 				$content = $template->render($replaces);
+                                
+                            
 				 
                         
-                                
+                                //$action = new Action(index)
 			}
 			
 			
@@ -82,8 +108,13 @@ class Principal extends Page
 		
 		   
 			parent::add($content);
+                        
 			
 	}
+        
+        public function action($get){
+            print_r($get);
+        }
 	
 
 }

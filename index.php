@@ -17,17 +17,23 @@ $al->register();
 use Sheep\Session\Session;
 
 $content = '';
-
+$class = '';
 new Session;
 if (Session::getValue('logged')) {
     $template = file_get_contents('App/Templates/gerenciamento.html');
-    $class = '';
+    $class = 'CursoList';
+}
+if(!isset($_GET['class'])){
+    $template = file_get_contents('App/Templates/Principal.html');
+    $class='View';
 }
 
+if(isset($_GET['class']) AND ($_GET['class']=='View')||(($_GET['class']=='About'))){
+    $template = file_get_contents('App/Templates/Principal.html');
+    $class=$_GET['class'];
+}
 else {
-    $template = file_get_contents('App/Templates/welcome.html');
-    $class = 'Principal';
-	
+    
 	if (isset($_GET['class']) AND ($_GET['class']!='CardList') ){
 			$inject=$_GET['class'];
 			$template = file_get_contents('App/Templates/login.html');
@@ -38,6 +44,7 @@ else {
 
 if (isset($_GET['class']) AND Session::getValue('logged'))
 {
+    $template = file_get_contents('App/Templates/gerenciamento.html');
     $class = $_GET['class'];
 }
 

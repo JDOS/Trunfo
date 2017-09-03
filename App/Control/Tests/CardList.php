@@ -47,12 +47,12 @@ class CardList extends Page
 				$grafico['info']=10;
 				$replaces['grafico']=$grafico;
 				//print_r($replaces);
-				$content1 = $template->render($replaces);
+				$content = $template->render($replaces);
 				
-                                $template2 = $twig->loadTemplate('principal.html');
-                                $replaces2 = array();
-                                $replaces2['conteudo']=$content1;
-                                $content = $template2->render($replaces2);
+                             //   $template2 = $twig->loadTemplate('principal.html');
+                              //  $replaces2 = array();
+                               // $replaces2['conteudo']=$content1;
+                                //$content = $template2->render($replaces2);
 			}
 			
 			
